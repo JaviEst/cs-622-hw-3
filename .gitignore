@@ -1,0 +1,7 @@
+target
+.idea/
+JavaProjectTemplate.iml
+.DS_Store
+.vscode/
+api_data.json
+search-history.txt
