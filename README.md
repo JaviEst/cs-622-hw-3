@@ -2,17 +2,46 @@
 | CS-622       | Advanced Programming Techniques |
 |--------------|---------------------------------|
 | Name         | Javier Esteban de Celis         |
-| Date         | 09/30/2025                      |
+| Date         | 09/30/2025 and 12/02/2025       |
 | Course       | Fall                            |
-| Homework #   | 3                               |
+| Homework #   | 3 and extra credit              |
 
-# Homework Overview
-This is a small application that fetches data from a public REST API (https://jikan.moe/), stores it locally, lets the user search through the data using regular expressions and the inverted index algorithm, keeps a persistent history of searched terms, and compares the performance of both search algorithms.
 
 # GitHub Repository Link:
 https://github.com/JaviEst/cs-622-hw-3
 
-# Implementation Description
+
+# Implementation Description Homework 3 (Old Console Functionality)
+
+## Overview
+
+This Spring Boot web application provides a beautiful web interface for the anime search functionality. It allows users to:
+- Fetch anime data from the Jikan API
+- Search for words using both RegEx and Inverted Index algorithms
+- Compare performance between the two search methods
+- View search history
+- Visualize results in an intuitive UI
+
+## Features
+
+- **Modern Web UI**: Clean, responsive interface with gradient backgrounds
+- **Real-time Search**: Search multiple words simultaneously (comma-separated)
+- **Performance Visualization**: See detailed performance comparisons between algorithms
+- **Search History**: Track how many times each term has been searched
+- **Anime Card View**: View pretty anime cards to help users decide what anime to watch next
+- **API Data Viewer**: View raw JSON data from the API
+- **Live Updates**: Real-time updates of search history after each search
+
+
+# Implementation Description Homework 3 (Old Console Functionality)
+
+## Overview
+
+This is a small application that fetches data from a public REST API (https://jikan.moe/), stores it locally, lets the user search through the data using regular expressions and the inverted index algorithm, keeps a persistent history of searched terms, and compares the performance of both search algorithms.
+
+
+## Features
+
 - `api.ApiCall`: Fetches data from the Jikan (MyAnimeList) API and handles exceptions.
 - `file.FileHandler`: Saves and reads data to and from files.
 - `searcher.RegExSearcher`: Counts case-insensitive regex matches for a list of patterns within a text using Tree Traversal DFS.
@@ -33,6 +62,7 @@ https://github.com/JaviEst/cs-622-hw-3
 8. Display search results, performance comparison, and timing data for plotting.
 9. Save updated search history back to disk.
 
+
 ## Search Algorithm Comparison
 
 ### RegEx Search (Tree Traversal DFS)
@@ -42,12 +72,14 @@ https://github.com/JaviEst/cs-622-hw-3
   - Good for complex pattern matching
   - Performance degrades with longer patterns
 
+
 ### Inverted Index Search
 - **Algorithm**: Pre-builds a word frequency map
 - **Characteristics**:
   - Requires preprocessing (one-time cost)
   - Extremely fast for exact word matches
   - Memory efficient for repeated searches
+
 
 ### Performance Measurement
 - Both algorithms are measured using `System.nanoTime()` for high precision
@@ -60,7 +92,22 @@ https://github.com/JaviEst/cs-622-hw-3
 - `api_data.json`: Latest API response persisted locally.
 - `search-history.txt`: Key-value lines in the format `term:count`.
 
-# Run the Application
+
+# Run the Application (New Website Functionality)
+To run the program you will first need to compile the code by running the following command:
+```bash
+mvn clean compile
+```
+
+Once the above is successfully ran, you can run the program by running the following command:
+```bash
+mvn spring-boot:run
+```
+
+Then you will be able to access the full stack appplication at http://localhost:8070/
+
+
+# Run the Application (Old Console Functionality)
 To run the program you will first need to compile the code by running the following command:
 ```bash
 mvn clean compile
