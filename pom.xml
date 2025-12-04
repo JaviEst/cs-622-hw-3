@@ -5,6 +5,15 @@
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <!-- This line specifies the version of the Project Object Model (POM) for Maven. It indicates that the project is using version 4.0.0 of the POM. -->
     <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Spring Boot parent for dependency management -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.14</version>
+        <relativePath/>
+    </parent>
+    
     <!-- This is the Maven groupId of the project, which identifies the project uniquely across all projects. -->
     <groupId>edu.bu.cs622.hw2</groupId>
     <!-- This specifies the name of the project's artifact (e.g., the compiled output file or library) that will be created when the project is built. -->
@@ -25,12 +34,13 @@
      that the project uses. In this case, the project is using version 1.8 of the Java
      programming language. This property is used by the Maven Compiler Plugin to compile
      the source code. -->
-        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.source>11</maven.compiler.source>
         <!-- The `maven.compiler.target` property specifies the version of the JVM that the
      compiled code should be compatible with. In this case, the compiled code is
      compatible with version 1.8 of the Java Virtual Machine (JVM). This property
      is used by the Maven Compiler Plugin to set the target JVM version. -->
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
         <!-- The `project.build.sourceEncoding` property specifies the character encoding
      used by the source files in the project. In this case, the encoding is UTF-8.
      This property is used by various plugins to ensure that the source code is read
@@ -160,6 +170,32 @@
         </plugins>
     </build>
     <dependencies>
+        <!-- Spring Boot Starter Web for REST API and web application -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        <!-- Spring Boot Starter Thymeleaf for HTML templates -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        
+        <!-- Spring Boot DevTools for hot reload during development -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        
+        <!-- Gson for JSON processing -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Data - CS622 HW3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+
+        .info-box {
+            background: #edf2f7;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .info-box p {
+            color: #2d3748;
+            margin: 5px 0;
+        }
+
+        .data-container {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            max-height: 600px;
+            overflow: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .data-container pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .copy-button {
+            background: #48bb78;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #718096;
+        }
+
+        .empty-state h2 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-button">← Back to Search</a>
+        
+        <h1>📄 API Data</h1>
+        <p class="subtitle">Raw JSON data from the Jikan API</p>
+
+        <div class="info-box" th:if="${dataLength > 0}">
+            <p><strong>Data Length:</strong> <span th:text="${dataLength}">0</span> characters</p>
+            <p><strong>Source:</strong> api_data.json</p>
+        </div>
+
+        <div th:if="${dataLength > 0}">
+            <div class="data-container" id="dataContainer">
+                <pre th:text="${apiData}">No data available</pre>
+            </div>
+            <button class="copy-button" onclick="copyData()">📋 Copy to Clipboard</button>
+        </div>
+
+        <div th:if="${dataLength == 0}" class="empty-state">
+            <h2>No Data Available</h2>
+            <p>Click "Fetch Fresh API Data" on the home page to load data.</p>
+            <a href="/" class="back-button" style="margin-top: 20px;">Go to Home Page</a>
+        </div>
+    </div>
+
+    <script>
+        function copyData() {
+            const dataContainer = document.getElementById('dataContainer');
+            const text = dataContainer.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Data copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy data: ' + err);
+            });
+        }
+    </script>
+</body>
+</html>

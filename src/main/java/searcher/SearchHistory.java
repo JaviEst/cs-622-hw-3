@@ -58,6 +58,15 @@ public class SearchHistory {
   }
 
   /**
+   * Get all search counts.
+   * 
+   * @return a map of all search terms and their counts
+   */
+  public static Map<String, Integer> getAllSearchCounts() {
+    return new HashMap<>(searchCounts);
+  }
+
+  /**
    * Save search history to file.
    */
   public static void saveHistory() {
